@@ -1,0 +1,13 @@
+<div>
+  <h2>Lista przedmiotów</h2>
+  <ul>
+    <li *ngFor="let item of users">
+      {{ item.itemname }} ({{ item.itemnumber }}) - Rarity: {{ item.rarity }} - User added: {{item.username}} Added on: {{ item.insertDate }}
+    </li>
+  </ul>
+  <button (click)="nextPage()">Next</button>
+</div>
+<div>
+  <button (click)="previousPage()" [disabled]="currentPage === 0">Back</button>
+  <button (click)="nextPage()">Next</button>
+</div>
