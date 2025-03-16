@@ -6,11 +6,6 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   template: `
-    <nav>
-      <a routerLink="/login">Login</a>
-      <a routerLink="/register">Register</a>
-      <a routerLink ="/user-list">Glowna</a>
-    </nav>
     <router-outlet></router-outlet>
   `,
 })

@@ -1,13 +1,35 @@
 <div>
   <h2>Lista przedmiotów</h2>
-  <ul>
-    <li *ngFor="let item of users">
-      {{ item.itemname }} ({{ item.itemnumber }}) - Rarity: {{ item.rarity }} - User added: {{item.username}} Added on: {{ item.insertDate }}
+  <ul class="user-list">
+    <li *ngFor="let user of users" class="user-item">
+      <div class="icon-container"
+           (mousemove)="onMouseMove($event, user.itemname)"
+           (mouseleave)="hideTooltip()">
+        <!-- Ikona przedmiotu -->
+        <img [src]="user.fullIconUrl" alt="Ikona" class="margo-item-icon">
+      </div>
+
+      <!-- Informacje obok ikony -->
+      <span class="item-info">
+      <strong>{{ user.itemname }}</strong> ({{ user.itemnumber }})
+      - Rarity: {{ user.rarity }}
+        - User: {{ user.username }}
+        - Added on: {{ user.insertDate | date:'yyyy-MM-dd HH:mm:ss' }}
+    </span>
     </li>
+
+    <!-- Dynamiczny tooltip -->
+    <div class="dynamic-tooltip"
+         [style.top.px]="tooltipY"
+         [style.left.px]="tooltipX"
+         [style.opacity]="tooltipVisible ? 1 : 0">
+      {{ tooltipText }}
+    </div>
   </ul>
-  <button (click)="nextPage()">Next</button>
-</div>
-<div>
-  <button (click)="previousPage()" [disabled]="currentPage === 0">Back</button>
-  <button (click)="nextPage()">Next</button>
+
+  <!-- Paginacja -->
+  <div>
+    <button (click)="previousPage()" [disabled]="currentPage === 0">Back</button>
+    <button (click)="nextPage()">Next</button>
+  </div>
 </div>

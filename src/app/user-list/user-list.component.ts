@@ -18,6 +18,11 @@ export class UserListComponent implements OnInit {
   users: EqEntity[] = [];
   currentPage = 0;
 
+  tooltipX = 0;
+  tooltipY = 0;
+  tooltipText = '';
+  tooltipVisible = false;
+
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
@@ -26,8 +31,23 @@ export class UserListComponent implements OnInit {
 
   loadUsers() {
     this.userService.getUsers(this.currentPage).subscribe(data => {
-      this.users = data.filter(user => user.insertDate !== null);
+      this.users = data.filter(user => user.insertDate !== null)
+        .map(user => ({
+          ...user,
+          fullIconUrl: `https://micc.garmory-cdn.cloud/obrazki/itemy/${user.ikona}`
+        }));
     });
+  }
+
+  onMouseMove(event: MouseEvent, itemName: string) {
+    this.tooltipX = event.pageX + 15; // 15px od kursora
+    this.tooltipY = event.pageY + 15;
+    this.tooltipText = itemName;
+    this.tooltipVisible = true;
+  }
+
+  hideTooltip() {
+    this.tooltipVisible = false;
   }
 
   nextPage() {

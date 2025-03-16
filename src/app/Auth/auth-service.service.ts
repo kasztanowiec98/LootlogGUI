@@ -20,7 +20,7 @@ export class AuthService {
   }
 
   saveToken(token: string): void {
-    localStorage.setItem('jwt_token', token);
+    this.cookieService.set('jwt_token', token, { path: '/', secure: true, sameSite: 'Strict' });
   }
 
   getToken(): string | null {

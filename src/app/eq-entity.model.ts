@@ -7,6 +7,8 @@ export interface EqEntity {
   insertDate: Date; // Typ obiektu Date
   updateDate: Date; // Dodaj, jeśli potrzebujesz
   username: string;
+  ikona: string;
+  fullIconUrl?: string;
 }
 
 export interface EqEntityDTO {

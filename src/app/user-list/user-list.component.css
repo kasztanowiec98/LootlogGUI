@@ -1,0 +1,65 @@
+/* Lista użytkowników */
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Każdy element w jednej linii */
+.user-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+/* Kontener ikony */
+.icon-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Ikona 32x32 px */
+.margo-item-icon {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: transform 0.2s ease;
+}
+
+/* Powiększenie ikony przy hover */
+.icon-container:hover .margo-item-icon {
+  transform: scale(1.1);
+}
+
+/* Informacje obok ikony */
+.item-info {
+  white-space: nowrap;
+  margin-left: 10px;
+}
+
+/* Dynamiczny tooltip */
+/* Dynamiczny tooltip */
+.dynamic-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  font-size: 14px;
+  pointer-events: none; /* Nie blokuje interakcji */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  z-index: 999;
+  transition: opacity 0.2s ease;
+}
+
+/* Usunięcie strzałki */
+.dynamic-tooltip::after {
+  display: none;
+}
+
